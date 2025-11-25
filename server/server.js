@@ -25,6 +25,9 @@ connectDB();
 // Create an instance of the Express application
 const app = express();
 
+// Trust the proxy (Render/Heroku/Vercel) to correctly identify the protocol (https)
+app.enable('trust proxy');
+
 // --- MIDDLEWARE SETUP ---
 
 // Configure Cross-Origin Resource Sharing (CORS)
