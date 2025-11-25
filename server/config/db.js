@@ -5,7 +5,8 @@ const mongoose = require('mongoose');
 const connectDB = async () => {
   try {
     // Attempt to connect to the MongoDB URI from our environment variables
-    const conn = await mongoose.connect(process.env.MONGO_URI, {
+    // Support both MONGODB_URI (standard) and MONGO_URI (legacy/local)
+    const conn = await mongoose.connect(process.env.MONGODB_URI || process.env.MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

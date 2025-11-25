@@ -149,7 +149,7 @@ Click **"Deploy"** - Vercel will build and deploy!
 Go back to Render → Environment → Update:
 
 ```env
-CLIENT_URL=https://my-health-chatbot.vercel.app
+C =https://my-health-chatbot.vercel.app
 ```
 
 ---
