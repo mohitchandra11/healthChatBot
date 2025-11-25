@@ -5,7 +5,7 @@ if (!process.env.GEMINI_API_KEY) {
   throw new Error("FATAL ERROR: GEMINI_API_KEY is not set in the .env file.");
 }
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash"});
 
 // Virtual Doctor streaming chat
 const virtualDoctorStream = async (req, res) => {

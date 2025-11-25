@@ -406,7 +406,7 @@ netlify deploy --prod --dir=build
 
 1. Add to `package.json`:
    ```json
-   "homepage": "https://yourusername.github.io/repo-name"
+   "homepage": "https://mohitchandra11.github.io/my-health-chatbot"
    ```
 
 2. Deploy:
@@ -526,11 +526,11 @@ For issues or questions, create an issue in the repository.
 
 ## 📝 License
 
-This project is licensed under the MIT License.
+All rights reserved.
 
 ## 👥 Development Team
 
-- Frontend Development Team
+- [@mohitchandra11](https://github.com/mohitchandra11) - Frontend Development
 
 ## 🔄 Version History
 

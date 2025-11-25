@@ -13,7 +13,7 @@ const connectDB = require('./config/db');
 dotenv.config();
 
 // Execute the passport configuration file to set up the Google strategy
-require('./config/passport-setup'); 
+require('./config/passport-setup');
 
 // --- DATABASE CONNECTION ---
 
@@ -29,7 +29,7 @@ const app = express();
 
 // Configure Cross-Origin Resource Sharing (CORS)
 const corsOptions = {
-  origin: '*', // For development, allow all origins. For production, you would restrict this to your frontend's domain.
+  origin: process.env.CLIENT_URL || '*', // Use env var for production security
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   allowedHeaders: ['Content-Type', 'Authorization'], // Explicitly allow the Authorization header for JWT
 };
@@ -53,6 +53,7 @@ app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/chat', require('./routes/chatRoutes'));
 app.use('/api/guest-chat', require('./routes/guestChatRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
+app.use('/api/virtual-doctor', require('./routes/virtualDoctor'));
 
 
 // --- SERVER LISTENER ---

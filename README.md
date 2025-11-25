@@ -66,7 +66,7 @@ Before you begin, ensure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/mohitchandra11/my-health-chatbot.git
 cd my-health-chatbot
 ```
 
@@ -288,11 +288,11 @@ For issues or questions, please create an issue in the repository or contact the
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+All rights reserved.
 
 ## 👥 Contributors
 
-- Development Team
+- [@mohitchandra11](https://github.com/mohitchandra11) - Full Stack Development
 
 ## 🔄 Version History
 

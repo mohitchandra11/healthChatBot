@@ -571,11 +571,11 @@ Monitor these logs during development and production.
 
 ## 📝 License
 
-This project is licensed under the MIT License.
+All rights reserved.
 
 ## 👥 Development Team
 
-- Backend Development Team
+- [@mohitchandra11](https://github.com/mohitchandra11) - Backend Development
 
 ## 🔄 Version History
 

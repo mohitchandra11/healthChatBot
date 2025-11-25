@@ -30,7 +30,7 @@ const GuestChatPage = () => {
     setIsSending(true);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/guest-chat', { message: messageToSend });
+      const response = await axios.post(`${process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}/guest-chat`, { message: messageToSend });
       const botMessage = { text: response.data.reply, sender: 'bot', id: Date.now() + 1 };
       setMessages(prev => [...prev, botMessage]);
     } catch (error) {
@@ -52,13 +52,13 @@ const GuestChatPage = () => {
           </button>
         </div>
         <div className="flex-1 flex flex-col items-center justify-center p-4 text-center">
-            <LockClosedIcon className="h-10 w-10 text-gray-400 mb-4 flex-shrink-0"/>
-            {isSidebarOpen && (
-                <>
-                    <h3 className="font-semibold text-lg text-gray-100">Full Features Locked</h3>
-                    <p className="text-sm text-gray-400 mt-2">Sign up / Sign in to save, rename, and delete your chat history.</p>
-                </>
-            )}
+          <LockClosedIcon className="h-10 w-10 text-gray-400 mb-4 flex-shrink-0" />
+          {isSidebarOpen && (
+            <>
+              <h3 className="font-semibold text-lg text-gray-100">Full Features Locked</h3>
+              <p className="text-sm text-gray-400 mt-2">Sign up / Sign in to save, rename, and delete your chat history.</p>
+            </>
+          )}
         </div>
         <div className="p-4 space-y-3 border-t border-white/10">
           <button onClick={() => openAuthModal('signup')} className={`w-full flex items-center gap-2 px-4 py-2 bg-blue-600 rounded-md hover:bg-blue-500 transition ${isSidebarOpen ? 'justify-start' : 'justify-center h-12'}`} title="Sign Up Now">
@@ -66,7 +66,7 @@ const GuestChatPage = () => {
             {isSidebarOpen && <span className="font-semibold">Sign Up Now</span>}
           </button>
           {isSidebarOpen && (
-             <button onClick={() => openAuthModal('login')} className="w-full flex items-center justify-start gap-2 px-4 py-2 bg-gray-700 rounded-md hover:bg-gray-600 transition">
+            <button onClick={() => openAuthModal('login')} className="w-full flex items-center justify-start gap-2 px-4 py-2 bg-gray-700 rounded-md hover:bg-gray-600 transition">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 flex-shrink-0"><path fillRule="evenodd" d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm10.72 4.72a.75.75 0 011.06 0l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H9a.75.75 0 010-1.5h10.94l-1.72-1.72a.75.75 0 010-1.06z" clipRule="evenodd" /></svg>
               <span className="font-semibold">Sign In</span>
             </button>

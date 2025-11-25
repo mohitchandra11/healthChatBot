@@ -31,11 +31,11 @@ router.get('/google', passport.authenticate('google', { scope: ['profile', 'emai
 
 router.get(
   '/google/callback',
-  passport.authenticate('google', { session: false }), 
+  passport.authenticate('google', { session: false }),
   (req, res) => {
     const token = jwt.sign({ id: req.user._id }, process.env.JWT_SECRET, { expiresIn: '30d' });
     // This is the crucial redirect to the frontend's dedicated callback handler page.
-    res.redirect(`http://localhost:3000/auth/callback?token=${token}`);
+    res.redirect(`${process.env.CLIENT_URL || 'http://localhost:3000'}/auth/callback?token=${token}`);
   }
 );
 

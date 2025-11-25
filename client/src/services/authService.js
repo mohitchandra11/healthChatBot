@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/auth/';
+const API_URL = `${process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}/auth/`;
 
 const register = (name, email, password, country) => {
   return axios.post(API_URL + 'register', { name, email, password, country });
@@ -23,7 +23,7 @@ const logout = () => {
   localStorage.removeItem('user');
   // 2. Force a hard refresh and navigate to the homepage.
   // This is the key to destroying all old React state.
-  window.location.href = '/'; 
+  window.location.href = '/';
 };
 
 const getCurrentUser = () => {

@@ -17,7 +17,7 @@ export function ChatProvider({ children }) {
   const [error, setError] = useState(null);
   const { activeView } = useDashboard();
 
-  const API_URL = 'http://localhost:5000/api/chat/';
+  const API_URL = `${process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}/chat/`;
 
   const getAuthConfig = useCallback(() => {
     if (!currentUser?.token) {
@@ -64,7 +64,7 @@ export function ChatProvider({ children }) {
     if (!config) return;
     setError(null);
     try {
-      const res = await axios.post(API_URL, {}, config); 
+      const res = await axios.post(API_URL, {}, config);
       setChats(prev => [res.data, ...prev]);
       setActiveChatId(res.data._id);
     } catch (err) {
@@ -118,7 +118,7 @@ export function ChatProvider({ children }) {
       console.error("Rename Chat Error:", err);
     }
   }, [getAuthConfig]);
-  
+
   const activeChat = useMemo(() => chats.find(chat => chat._id === activeChatId), [chats, activeChatId]);
 
   const value = useMemo(() => ({
