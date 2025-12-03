@@ -12,6 +12,16 @@ const connectDB = require('./config/db');
 // Load environment variables from the .env file into process.env
 dotenv.config();
 
+// --- CRITICAL: ENVIRONMENT VARIABLE CHECK ---
+const requiredEnvVars = ['MONGODB_URI', 'JWT_SECRET', 'GOOGLE_CLIENT_ID', 'GOOGLE_CLIENT_SECRET', 'CLIENT_URL'];
+const missingEnvVars = requiredEnvVars.filter((key) => !process.env[key]);
+
+if (missingEnvVars.length > 0) {
+  console.error('FATAL ERROR: Missing required environment variables:', missingEnvVars.join(', '));
+  process.exit(1); // Stop the server immediately if config is missing
+}
+
+
 // Execute the passport configuration file to set up the Google strategy
 require('./config/passport-setup');
 
