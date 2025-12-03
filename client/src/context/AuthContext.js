@@ -31,6 +31,30 @@ export function AuthProvider({ children }) {
     return user;
   };
 
+  const loginWithGoogleToken = async (token) => {
+    try {
+      // REACT_APP_API_URL is expected to be 'http://localhost:5000/api' or similar (including /api)
+      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+
+      const response = await axios.get(`${apiUrl}/users/me`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      const userProfile = response.data;
+      // Combine profile with token to match authService structure
+      const userToSave = { ...userProfile, token };
+
+      localStorage.setItem('user', JSON.stringify(userToSave));
+      setCurrentUser(userToSave);
+      return userToSave;
+    } catch (error) {
+      console.error("Error logging in with Google token:", error);
+      throw error;
+    }
+  };
+
   const logout = () => {
     authService.logout();
     setCurrentUser(null);
