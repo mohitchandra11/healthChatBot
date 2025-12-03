@@ -34,20 +34,6 @@ export function AuthProvider({ children }) {
   const logout = () => {
     authService.logout();
     setCurrentUser(null);
-    window.location.href = '/'; // Hard refresh to clear all state
-  };
-
-  const loginWithGoogleToken = async (token) => {
-    try {
-      localStorage.setItem('user', JSON.stringify({ token }));
-      const config = { headers: { Authorization: `Bearer ${token}` } };
-      const response = await axios.get('http://localhost:5000/api/users/me', config);
-      const user = { ...response.data, token };
-      localStorage.setItem('user', JSON.stringify(user));
-      setCurrentUser(user);
-    } catch (error) {
-      logout(); // On failure, perform a hard logout
-    }
   };
 
   const value = {
